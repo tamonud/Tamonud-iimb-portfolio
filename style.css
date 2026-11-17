@@ -1,0 +1,1668 @@
+/* ==========================================================================
+   TAMONUD MUKHERJEE - PERSONAL PORTFOLIO STYLESHEET
+   Technologies Used: Pure CSS3 (No JavaScript, No Frameworks, No Preprocessors)
+   Design Aesthetic: Human-Crafted Editorial & Contemporary Academic Style
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (VARIABLES)
+   Demonstrating: Centralized Design Tokens, HSL & Hex Color Palettes
+   -------------------------------------------------------------------------- */
+:root {
+  /* Editorial Palette: Warm parchment canvas, deep obsidian ink, academic navy & brass */
+  --bg-canvas: #FAF8F5;          /* Warm linen/paper background */
+  --bg-surface: #FFFFFF;         /* Crisp white for elevated card surfaces */
+  --bg-subtle: #F2EFE9;          /* Soft tint for secondary panels & table headers */
+  --bg-accent-tint: #EBF1F5;     /* Delicate navy tint for highlights */
+  --bg-gold-tint: #FAF3E8;       /* Warm ochre tint for milestone badges */
+
+  /* Text & Typographic Colors */
+  --text-primary: #1C2024;       /* Deep charcoal ink for high readability */
+  --text-secondary: #48525E;     /* Balanced slate gray for editorial body paragraphs */
+  --text-muted: #727F8D;         /* Subdued cool gray for captions and metadata */
+  --text-light: #FFFFFF;         /* Pure white text for dark badges and buttons */
+
+  /* Editorial Accent Colors */
+  --accent-navy: #183B56;        /* Deep academic navy - signifies IIMB pedigree */
+  --accent-navy-hover: #10273B;  /* Deeper navy for hover states */
+  --accent-brass: #B8823B;       /* Refined warm ochre/brass for distinction */
+  --accent-brass-subtle: #96672A;/* Slightly darker ochre for readable link text */
+  --accent-terracotta: #C85A32;  /* Editorial warm terracotta highlight */
+  --accent-green: #2E7D32;       /* Forest green for active/pursuing status */
+
+  /* Structural Borders & Rules */
+  --border-light: #E7E2D8;       /* Hairline rule between layout sections */
+  --border-medium: #D1CAC0;      /* Distinct card border */
+  --border-dark: #1C2024;        /* Bold typographic hairline separator */
+
+  /* Typography Stack */
+  --font-serif: 'Newsreader', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing Scale (Box Model) */
+  --space-2xs: 0.25rem;  /* 4px */
+  --space-xs:  0.5rem;   /* 8px */
+  --space-sm:  0.75rem;  /* 12px */
+  --space-md:  1rem;     /* 16px */
+  --space-lg:  1.5rem;   /* 24px */
+  --space-xl:  2rem;     /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4.5rem;   /* 72px */
+
+  /* Box Shadows (Subtle, tactile, non-glowing) */
+  --shadow-sm: 0 1px 3px rgba(28, 32, 36, 0.05);
+  --shadow-md: 0 4px 12px rgba(28, 32, 36, 0.06);
+  --shadow-hover: 0 8px 24px rgba(24, 59, 86, 0.10);
+
+  /* Layout Widths */
+  --max-width: 1140px;
+  --header-height: 72px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. CSS RESET & GLOBAL BOX MODEL
+   Demonstrating: Universal selector (*), box-sizing: border-box
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   3. ELEMENT SELECTORS: TYPOGRAPHY & SEMANTIC TAGS
+   Demonstrating: Element selectors, font pairings, line heights, margins
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--accent-navy);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-brass);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent-brass);
+  padding-left: var(--space-lg);
+  margin: var(--space-lg) 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+code, kbd, samp, .mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-light);
+  margin: var(--space-2xl) 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT UTILITIES & CONTAINERS
+   Demonstrating: Class selectors, margin auto, flexbox and CSS grid
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+.section {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  position: relative;
+}
+
+.section--bordered {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section--subtle {
+  background-color: var(--bg-subtle);
+}
+
+/* Section Header Editorial Presentation */
+.section-header {
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-navy);
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  background-color: var(--accent-brass);
+}
+
+.section-title {
+  font-size: 2.15rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVIGATION BAR & HEADER
+   Demonstrating: Position: sticky, flexbox layout, z-index, box-shadow
+   -------------------------------------------------------------------------- */
+#main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 248, 245, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-light);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo / Monogram Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.brand-monogram {
+  width: 38px;
+  height: 38px;
+  background-color: var(--accent-navy);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.brand:hover .brand-monogram {
+  transform: translateY(-1px);
+  background-color: var(--accent-brass);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.brand-role {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-navy);
+}
+
+/* Primary Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: var(--space-xs) 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--accent-navy);
+}
+
+/* Active Nav State */
+.nav-link.active {
+  color: var(--accent-navy);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-brass);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-navy);
+  border: 1px solid var(--accent-navy);
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.nav-cta:hover {
+  background-color: var(--accent-navy);
+  color: var(--text-light);
+}
+
+/* --------------------------------------------------------------------------
+   6. HERO SECTION / EDITORIAL MASTHEAD
+   Demonstrating: CSS Grid (asymmetric columns), Flexbox, relative positioning
+   -------------------------------------------------------------------------- */
+#hero-section {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  border-bottom: 1px solid var(--border-light);
+  background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, var(--bg-canvas) 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-affiliation {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.35rem 0.85rem;
+  background-color: var(--bg-accent-tint);
+  border: 1px solid rgba(24, 59, 86, 0.15);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-navy);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-lg);
+  align-self: flex-start;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+  display: inline-block;
+}
+
+.hero-title {
+  font-size: 3.25rem;
+  font-weight: 600;
+  line-height: 1.12;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.hero-title-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-brass);
+}
+
+.hero-lead {
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 580px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Primary and Secondary Button Components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--accent-navy);
+  color: var(--text-light);
+  border-color: var(--accent-navy);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-navy-hover);
+  color: var(--text-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-navy);
+  background-color: var(--bg-surface);
+  color: var(--accent-navy);
+  transform: translateY(-1px);
+}
+
+/* Quick Metadata Strip under CTA */
+.hero-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-light);
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.meta-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Hero Portrait Presentation */
+.hero-portrait-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  padding: var(--space-md);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-portrait-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.portrait-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: var(--bg-subtle);
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--border-light);
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.portrait-caption {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portrait-caption-name {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.portrait-caption-roll {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   7. "AT A GLANCE" DOSSIER / STATS GRID
+   Demonstrating: ID Selector (#at-a-glance), CSS Grid auto-fit, minmax
+   -------------------------------------------------------------------------- */
+#at-a-glance {
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.glance-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.glance-card:hover {
+  border-color: var(--accent-brass);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.glance-card .glance-code {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent-brass);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
+.glance-card .glance-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2xs);
+}
+
+.glance-card .glance-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   8. ABOUT ME SECTION (EDITORIAL SPLIT)
+   Demonstrating: ID Selector (#about), Two-column layout, pull quotes
+   -------------------------------------------------------------------------- */
+#about {
+  position: relative;
+  background-color: var(--bg-canvas);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: var(--space-2xl);
+}
+
+.about-narrative {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.about-narrative p {
+  margin-bottom: var(--space-lg);
+}
+
+.about-narrative strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.about-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.philosophy-card {
+  background-color: var(--bg-surface);
+  border-left: 4px solid var(--accent-brass);
+  border-top: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 0 6px 6px 0;
+  padding: var(--space-lg);
+}
+
+.philosophy-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.philosophy-attribution {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-navy);
+  font-weight: 600;
+}
+
+/* Collaboration Highlights Box */
+.collab-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-lg);
+}
+
+.collab-box-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.collab-list li {
+  position: relative;
+  padding-left: var(--space-md);
+  margin-bottom: var(--space-sm);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.collab-list li::before {
+  content: "•";
+  color: var(--accent-navy);
+  position: absolute;
+  left: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   9. CORE SKILLS MATRIX (BY DOMAIN)
+   Demonstrating: ID Selector (#skills), Flexbox badge tags, CSS Grid
+   -------------------------------------------------------------------------- */
+#skills {
+  position: relative;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.skill-category-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.skill-category-card:hover {
+  border-color: var(--accent-navy);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.skill-category-header {
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.skill-category-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-brass);
+  font-weight: 600;
+  margin-bottom: var(--space-2xs);
+}
+
+.skill-category-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.skill-badge-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.skill-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.skill-badge:hover {
+  background-color: var(--accent-navy);
+  color: var(--text-light);
+  border-color: var(--accent-navy);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   10. EDUCATION & TIMELINE COMPONENT
+   Demonstrating: ID Selector (#education), CSS Timeline, relative/absolute positioning
+   -------------------------------------------------------------------------- */
+#education {
+  position: relative;
+  background-color: var(--bg-canvas);
+}
+
+.timeline-container {
+  position: relative;
+  padding-left: var(--space-xl);
+}
+
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 6px;
+  width: 2px;
+  background-color: var(--border-medium);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-2xl);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: calc(-1 * var(--space-xl) + 1px);
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 3px solid var(--accent-navy);
+  box-shadow: 0 0 0 3px var(--bg-canvas);
+}
+
+.timeline-item--active .timeline-marker {
+  background-color: var(--accent-brass);
+  border-color: var(--accent-navy);
+}
+
+.timeline-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-lg);
+  transition: all var(--transition-fast);
+}
+
+.timeline-card:hover {
+  border-color: var(--accent-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-degree {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.timeline-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.65rem;
+  background-color: var(--bg-accent-tint);
+  color: var(--accent-navy);
+  border: 1px solid rgba(24, 59, 86, 0.2);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.timeline-score-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-navy);
+  background-color: var(--bg-gold-tint);
+  border: 1px solid rgba(184, 130, 59, 0.25);
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+}
+
+.timeline-institution {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--accent-navy);
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   11. TOOLS & TECHNICAL PROFICIENCY COMPONENT
+   Demonstrating: Flexbox, CSS progress indicator bars
+   -------------------------------------------------------------------------- */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.tool-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.tool-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tool-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.tool-level-text {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tool-dots-container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tool-dot {
+  width: 24px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--border-light);
+}
+
+.tool-dot.active {
+  background-color: var(--accent-navy);
+}
+
+.tool-note {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   12. INDUSTRIES & INTERESTS TAG CLOUDS
+   Demonstrating: Inline-flex, wrapping tag components
+   -------------------------------------------------------------------------- */
+.dual-tag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.tag-cloud-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-lg);
+}
+
+.tag-cloud-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.pill-tag {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8125rem;
+  background-color: var(--bg-canvas);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  transition: all var(--transition-fast);
+}
+
+.pill-tag:hover {
+  border-color: var(--accent-brass);
+  color: var(--accent-navy);
+  background-color: var(--bg-gold-tint);
+}
+
+/* --------------------------------------------------------------------------
+   13. PROJECTS & ACTIVITIES SECTION (ON PROJECTS.HTML)
+   Demonstrating: ID Selector (#projects-grid-section), CSS Grid, card box-shadow
+   -------------------------------------------------------------------------- */
+#projects-grid-section {
+  position: relative;
+  background-color: var(--bg-canvas);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.project-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-smooth);
+}
+
+.project-card:hover {
+  border-color: var(--accent-navy);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-meta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.project-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-brass);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--bg-subtle);
+  border-radius: 3px;
+  color: var(--text-muted);
+}
+
+.project-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.project-desc {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  flex: 1 0 auto;
+}
+
+.project-highlights-list {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--border-light);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   14. HIGHLIGHTS BANNER
+   Demonstrating: High-contrast editorial highlight panels
+   -------------------------------------------------------------------------- */
+.highlights-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.highlight-banner-card {
+  background-color: var(--accent-navy);
+  color: var(--text-light);
+  border-radius: 6px;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-banner-card::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 90px;
+  height: 90px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+}
+
+.highlight-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+  margin-bottom: var(--space-2xs);
+  font-weight: 600;
+}
+
+.highlight-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: var(--space-xs);
+}
+
+.highlight-subtitle {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   15. CERTIFICATIONS & ROADMAP TABLE
+   Demonstrating: ID Selector (#roadmap), Semantic HTML table, nth-child
+   -------------------------------------------------------------------------- */
+#roadmap {
+  position: relative;
+}
+
+.table-responsive-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.roadmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9375rem;
+}
+
+.roadmap-table th {
+  background-color: var(--bg-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 2px solid var(--border-medium);
+}
+
+.roadmap-table td {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.roadmap-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.roadmap-table tbody tr:hover {
+  background-color: var(--bg-canvas);
+}
+
+.table-course-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.table-platform-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-navy);
+}
+
+.status-badge-planned {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-navy);
+  border: 1px solid var(--accent-navy);
+  border-radius: 20px;
+  background-color: var(--bg-accent-tint);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   16. CONTACT PAGE LAYOUT & FORM STYLES
+   Demonstrating: Two-column layout, HTML form styling, :focus pseudo-classes
+   -------------------------------------------------------------------------- */
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.35fr;
+  gap: var(--space-2xl);
+  align-items: flex-start;
+}
+
+.contact-dossier {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-xl);
+}
+
+.dossier-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.dossier-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.contact-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.contact-channel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.channel-icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-accent-tint);
+  color: var(--accent-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(24, 59, 86, 0.15);
+}
+
+.channel-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.channel-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.channel-value a:hover {
+  text-decoration: underline;
+}
+
+/* Professional Links Grid */
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-light);
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+  transition: all var(--transition-fast);
+}
+
+.social-button:hover {
+  border-color: var(--accent-navy);
+  background-color: var(--accent-navy);
+  color: var(--text-light);
+}
+
+/* Contact Form Container & ID Selector Demonstration */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-form input:focus,
+#contact-form select:focus,
+#contact-form textarea:focus {
+  border-color: var(--accent-navy);
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(24, 59, 86, 0.12);
+}
+
+.contact-form-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.label-required::after {
+  content: " *";
+  color: var(--accent-terracotta);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem var(--space-md);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-navy);
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(24, 59, 86, 0.12);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-help-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: var(--space-2xs);
+}
+
+/* --------------------------------------------------------------------------
+   17. SITE FOOTER
+   Demonstrating: Semantic footer, border-top, flexbox footer columns
+   -------------------------------------------------------------------------- */
+#main-footer {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.footer-brand-summary {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 380px;
+  margin-top: var(--space-sm);
+}
+
+.footer-column-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-navy);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer-nav-list a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.footer-nav-list a:hover {
+  color: var(--accent-navy);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.footer-academic-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-navy);
+}
+
+/* --------------------------------------------------------------------------
+   18. RESPONSIVE DESIGN & MEDIA QUERIES
+   Demonstrating: Breakpoints at 992px (laptops/tablets) and 768px/480px (mobile)
+   -------------------------------------------------------------------------- */
+
+/* Tablet & Smaller Laptops */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2.35rem;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .hero-portrait-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile & Small Tablets */
+@media (max-width: 768px) {
+  :root {
+    --header-height: auto;
+  }
+
+  #main-header {
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .nav-cta {
+    display: none; /* Keep mobile header clean and uncluttered */
+  }
+
+  .hero-title {
+    font-size: 2.15rem;
+  }
+
+  .hero-lead {
+    font-size: 1.05rem;
+  }
+
+  .hero-meta-strip {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .highlights-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dual-tag-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 480px) {
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .contact-form-card {
+    padding: var(--space-lg);
+  }
+}
